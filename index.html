@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Langton's Ant | Brieuc Barthélemy</title>
+    <meta name="description"
+          content="A javascript example of Langton's ant | Un exemple de la fourmi de Langton en Javascript ">
+    <meta name="author" content="Brieuc barthélemy">
+    <link href="vendor/foundation-6.2.3-custom/css/foundation.min.css" rel="stylesheet">
+    <style>
+        .white {
+            fill: #fff;
+        }
+
+        .black {
+            fill: #000;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        h1{font-size: large;}
+
+        #control_panel {font-size:75%;position: absolute;right: 10px;top: 10px ;width: 250px;padding: 10px;background-color: #fff; }
+
+    </style>
+</head>
+
+<div id="control_panel" class="small">
+    <h1>Game of life</h1>
+    ... is a two-dimensional Turing machine with a very simple set of rules but complex emergent
+    behavior. [<a href="https://en.wikipedia.org/wiki/Langton%27s_ant" target="_blank">Wikipedia</a>]<br>
+    Rules are: when the Ant (<img src="img/square.gif">) is on white tile, it goes right, if black it goes left.
+    When it leaves the tile, the tile toggles to the other color.<br>
+    Note: the "ant" will stop when it goes out of grid.</small>
+    <hr>
+   Speed :<br>
+    Change frequency: <span id="updateTime">200</span> milliseconds.<br>
+    <input type="range" min="10" max="500" value="200" step="10" onchange="app.setTiming(this.value);document.getElementById('updateTime').innerHTML=this.value" />
+       <br>
+       <button onclick="app.start()" class="button small">Start</button>
+       <button onclick="app.stop()" class="button primary small">Pause</button><br>
+       Tile size: <span id="tileSizeDisplay">15</span> px.<br>
+       <input type="range" min="5" id="tileSize" max="100" value="12" step="1" onchange="document.getElementById('tileSizeDisplay').innerHTML=this.value" />
+       <br>When you have changed the tile size, Click on reset button.<br>
+       <button onclick="app.reset(document.getElementById('tileSize').value)" class="button primary small">Reset simulation</button>
+
+    <div>
+       Number of move: <span id="moveNbr"></span>
+    </div>
+
+    You can find the sources on <a href="http://bit.ly/25UgkmW" target="_blank">Github</a>.<br/>
+    <a href="http://brieuc.be" target="_blank">Brieuc.be</a>
+</div>
+
+<body>
+<script src="js/app.js"></script>
+<script>
+    // -- Build grid and Ant
+    var app = new App("moveNbr");
+    // -- Temporize start
+    setTimeout(app.start(),500);
+</script>
+</body>
+</html>
