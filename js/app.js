@@ -18,7 +18,7 @@ var App = function (domCounterId) {
         // -- instanciation element
         grid = new Grid(tileSize);
         grid.addSvgContainer();
-        grid.randomize();
+
 
     }
 
@@ -55,6 +55,10 @@ var App = function (domCounterId) {
 
     }
 
+    function getGrid(){
+        return grid;
+    }
+
     init();
 
     return {
@@ -62,7 +66,8 @@ var App = function (domCounterId) {
         stop: stop,
         setTiming: setTiming,
         reset: reset,
-        setTileSize: setTileSize
+        setTileSize: setTileSize,
+        getGrid : getGrid
     }
 };
 /**
@@ -128,22 +133,12 @@ var Tile = function (x, y, size) {
         domElement.classList.toggle("black");
     }
 
-    function getDirection() {
-        if (domElement.classList.contains('white')) {
-            // right
-            return -Math.PI / 2;
-        } else if (domElement.classList.contains('black')) {
-            // left
-            return Math.PI / 2;
-        }
-    }
 
 
     init();
 
     return {
         getDomElement: getDomElement,
-        getDirection: getDirection,
         toggleColor: toggleColor,
         isAlive: isAlive,
         setAlive: setAlive,
@@ -190,9 +185,26 @@ var Grid = function (tileSizeDef, containerDom) {
     }
 
     function randomize() {
+
         for (var i = 0; i < tilesHeight; i++) {
             for (var j = 0; j < tilesWidth; j++) {
                 Math.round((Math.random()*2)) > 1 ? arrayTile[i][j].toggleColor() : null;
+            }
+        }
+    }
+
+    function allDead() {
+        for (var i = 0; i < tilesHeight; i++) {
+            for (var j = 0; j < tilesWidth; j++) {
+                arrayTile[i][j].setDeath() ;
+            }
+        }
+    }
+
+    function allAlive() {
+        for (var i = 0; i < tilesHeight; i++) {
+            for (var j = 0; j < tilesWidth; j++) {
+                arrayTile[i][j].setAlive() ;
             }
         }
     }
@@ -278,7 +290,9 @@ var Grid = function (tileSizeDef, containerDom) {
         addSvgContainer: addSvgContainer,
         getCenteredTile: getCenteredTile,
         run: run,
-        randomize : randomize
+        randomize : randomize,
+        allAlive : allAlive,
+        allDead: allDead
     }
 
 };

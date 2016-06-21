@@ -22,39 +22,64 @@
             margin: 0;
             overflow: hidden;
         }
-        h1{font-size: large;}
 
-        #control_panel {font-size:75%;position: absolute;right: 10px;top: 10px ;width: 250px;padding: 10px;background-color: #fff; }
+        h1 {
+            font-size: large;
+        }
+
+        #control_panel {
+            font-size: 75%;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 250px;
+            padding: 10px;
+            background-color: #fff;
+        }
 
     </style>
 </head>
 
 <div id="control_panel" class="small">
     <h1>Game of life</h1>
-    ..., also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.. [<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">Wikipedia</a>]<br>
-    Rules are:
-    <li>Any live cell with fewer than two live neighbours dies, as if caused by under-population.</li>
-    <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
-    <li>Any live cell with more than three live neighbours dies, as if by over-population.</li>
-    <li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
-        </small>
+
+        ..., also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway
+        in 1970.. [<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">Wikipedia</a>]<br>
+        Rules are:
+        <li>Any live cell with fewer than two live neighbours dies, as if caused by under-population.</li>
+        <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+        <li>Any live cell with more than three live neighbours dies, as if by over-population.</li>
+        <li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+
     <hr>
-   Speed :<br>
+    Speed :<br>
     Change frequency: <span id="updateTime">200</span> milliseconds.<br>
-    <input type="range" min="10" max="500" value="200" step="10" onchange="app.setTiming(this.value);document.getElementById('updateTime').innerHTML=this.value" />
-       <br>
-       <button onclick="app.start()" class="button small">Start</button>
-       <button onclick="app.stop()" class="button primary small">Pause</button><br>
-       Tile size: <span id="tileSizeDisplay">15</span> px.<br>
-       <input type="range" min="5" id="tileSize" max="100" value="12" step="1" onchange="document.getElementById('tileSizeDisplay').innerHTML=this.value" />
-       <br>When you have changed the tile size, Click on reset button.<br>
-       <button onclick="app.reset(document.getElementById('tileSize').value)" class="button primary small">Reset simulation</button>
+    <input type="range" min="10" max="500" value="200" step="10"
+           onchange="app.setTiming(this.value);document.getElementById('updateTime').innerHTML=this.value"/>
+    <br>
+    <button onclick="app.start()" class="button small">Start</button>
+    <button onclick="app.stop()" class="button primary small">Pause</button>
+    <br>
+    Tile size: <span id="tileSizeDisplay">15</span> px.<br>
+    <input type="range" min="5" id="tileSize" max="100" value="12" step="1"
+           onchange="document.getElementById('tileSizeDisplay').innerHTML=this.value"/>
+    <br>When you have changed the tile size, Click on reset button.<br>
+    <button onclick="app.reset(document.getElementById('tileSize').value)" class="button primary small">Reset
+        simulation
+    </button>
+
+    <button onclick="app.getGrid().allAlive()" class="button primary small">Full Alive
+    </button>
+    <button onclick="app.getGrid().allDead()" class="button primary small">all dead
+    </button>
+    <button onclick="app.getGrid().randomize()" class="button primary small">Randomize field
+    </button>
 
     <div>
-       Number of move: <span id="moveNbr"></span>
+        Number of move: <span id="moveNbr"></span>
     </div>
 
-    You can find the sources on <a href="http://bit.ly/25UgkmW" target="_blank">Github</a>.<br/>
+    You can find the sources on <a href="http://bit.ly/28KWbdP" target="_blank">Github</a>.<br/>
     <a href="http://brieuc.be" target="_blank">Brieuc.be</a>
 </div>
 
@@ -64,7 +89,7 @@
     // -- Build grid
     var app = new App("moveNbr");
     // -- Temporize start
-    setTimeout(app.start(),500);
+   // setTimeout(app.start(), 500);
 </script>
 </body>
 </html>
