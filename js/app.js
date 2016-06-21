@@ -44,10 +44,6 @@ var App = function (domCounterId) {
         tileSize = newTileSize;
     }
 
-    function getNbrMove() {
-        return ant.getMoveNbr();
-    }
-
     function reset(tileSize) {
         setTileSize(tileSize);
         stop();
@@ -62,7 +58,6 @@ var App = function (domCounterId) {
     init();
 
     return {
-        getNbrMove: getNbrMove,
         start: start,
         stop: stop,
         setTiming: setTiming,

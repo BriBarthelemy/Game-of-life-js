@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Langton's Ant | Brieuc Barthélemy</title>
+    <title>Game of life in HTML/Javascript</title>
     <meta name="description"
-          content="A javascript example of Langton's ant | Un exemple de la fourmi de Langton en Javascript ">
+          content="Game of life from  John Horton Conway in Javascript | Jeu de la vie de John Horton Conway en Javascript ">
     <meta name="author" content="Brieuc barthélemy">
     <link href="vendor/foundation-6.2.3-custom/css/foundation.min.css" rel="stylesheet">
     <style>
@@ -31,11 +31,13 @@
 
 <div id="control_panel" class="small">
     <h1>Game of life</h1>
-    ... is a two-dimensional Turing machine with a very simple set of rules but complex emergent
-    behavior. [<a href="https://en.wikipedia.org/wiki/Langton%27s_ant" target="_blank">Wikipedia</a>]<br>
-    Rules are: when the Ant (<img src="img/square.gif">) is on white tile, it goes right, if black it goes left.
-    When it leaves the tile, the tile toggles to the other color.<br>
-    Note: the "ant" will stop when it goes out of grid.</small>
+    ..., also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970.. [<a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">Wikipedia</a>]<br>
+    Rules are:
+    <li>Any live cell with fewer than two live neighbours dies, as if caused by under-population.</li>
+    <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+    <li>Any live cell with more than three live neighbours dies, as if by over-population.</li>
+    <li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+        </small>
     <hr>
    Speed :<br>
     Change frequency: <span id="updateTime">200</span> milliseconds.<br>
@@ -59,7 +61,7 @@
 <body>
 <script src="js/app.js"></script>
 <script>
-    // -- Build grid and Ant
+    // -- Build grid
     var app = new App("moveNbr");
     // -- Temporize start
     setTimeout(app.start(),500);
