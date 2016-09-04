@@ -57,7 +57,7 @@
     <input type="range" min="10" max="500" value="200" step="10"
            onchange="app.setTiming(this.value);document.getElementById('updateTime').innerHTML=this.value"/>
     <br>
-    <button onclick="app.start()" class="button small">Start</button>
+    <button onclick="app.start()" class="button small success">Start</button>
     <button onclick="app.stop()" class="button primary small">Pause</button>
     <br>
     Tile size: <span id="tileSizeDisplay">15</span> px.<br>
@@ -89,7 +89,7 @@
     // -- Build grid
     var app = new App("moveNbr");
     // -- Temporize start
-   // setTimeout(app.start(), 500);
+    setTimeout(app.getGrid().randomize(), 500);
 </script>
 </body>
 </html>
